@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  client:
+    image: client:1.0.0
+    restart: always
+    environment:
+      - ENVMODE=dev
+    build:
+      dockerfile: Dockerfile
+      context: ./client
+    volumes:
+      - './client:/app'
+    ports:
+      - '3000:3000'
+    depends_on:
+      - server
+    networks:
+      - shared-network
+
+  server:
+    image: server:1.0.0
+    restart: always
+    environment:
+      - ENVMODE=dev
+    build:
+      dockerfile: Dockerfile
+      context: ./server
+    volumes:
+      - './server:/app'
+    ports:
+      - '8000:8000'
+    networks:
+      - shared-network
+networks:
+  shared-network:
