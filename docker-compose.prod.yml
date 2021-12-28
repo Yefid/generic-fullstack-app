@@ -12,7 +12,7 @@ services:
     volumes:
       - './client:/app'
     ports:
-      - '80:80'
+      - '443:80'
     depends_on:
       - server
     networks:

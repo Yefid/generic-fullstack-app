@@ -9,8 +9,8 @@ let config = () => {
 };
 
 let host = 'http://localhost:8000/';
-if (process.env.NODE_ENV == 'prod') {
-	host = 'server/';
+if (process.env.NODE_ENV === 'production') {
+	host = 'https://generic-fullstack-app-ts-ser.herokuapp.com/';
 }
 const url = host + 'api/movies';
 
@@ -18,6 +18,4 @@ const getAllMovies = () => {
 	return axios.get(url, config());
 };
 
-export default {
-	getAllMovies,
-};
+export default getAllMovies;
